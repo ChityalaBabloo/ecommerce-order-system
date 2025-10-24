@@ -95,8 +95,9 @@ java -jar target/order-processing-system-1.0.0.jar
 
 ### Access the Application
 
-- **Application URL**: `http://localhost:8080` (root endpoint with API details)
-- **H2 Console** (for database inspection): `http://localhost:8080/h2-console`
+- **Application URL**: <http://localhost:8080> (root endpoint with API details)
+- **H2 Console** (for database inspection): <http://localhost:8080/h2-console> 
+- (Click on the above link to access h2-databse. use the following credentials and click "Connect" to access the database.)
   - JDBC URL: `jdbc:h2:mem:orderdb`
   - Username: `sa`
   - Password: (leave empty)
@@ -106,9 +107,7 @@ java -jar target/order-processing-system-1.0.0.jar
 ### Interactive API Documentation (Swagger UI)
 
 Once the application is running, you can access the **interactive Swagger UI** at:
-```
-http://localhost:8080/swagger-ui.html
-```
+<http://localhost:8080/swagger-ui.html>
 
 ### Manual API Testing
 
