@@ -1,6 +1,7 @@
 # E-commerce Order Processing System
 
 A robust backend system built with Spring Boot for managing e-commerce orders. The system provides RESTful APIs for order creation, tracking, status management, and automatic order processing.
+The high-level architecture of the system is documented in [ARCHITECTURE.md](ARCHITECTURE.md).
 
 ## 🎯 Scope and Assumptions
 
@@ -80,25 +81,36 @@ This system focuses on **order processing and management**. The following aspect
 
 ## ▶️ Running the Application
 
-1. **Run using Maven**:
-   ```bash
-   mvn spring-boot:run
-   ```
+### Option 1: Using Maven
+```bash
+mvn spring-boot:run
+```
 
-2. **Run using Java**:
-   ```bash
-   mvn clean package
-   java -jar target/order-processing-system-1.0.0.jar
-   ```
+### Option 2: Using Java
+```bash
+mvn clean package
+java -jar target/order-processing-system-1.0.0.jar
+```
 
-3. **Application will start on**: `http://localhost:8080`
 
-4. **H2 Console** (for database inspection): `http://localhost:8080/h2-console`
-   - JDBC URL: `jdbc:h2:mem:orderdb`
-   - Username: `sa`
-   - Password: (leave empty)
+### Access the Application
+
+- **Application URL**: `http://localhost:8080` (root endpoint with API details)
+- **H2 Console** (for database inspection): `http://localhost:8080/h2-console`
+  - JDBC URL: `jdbc:h2:mem:orderdb`
+  - Username: `sa`
+  - Password: (leave empty)
 
 ## 📚 API Documentation
+
+### Interactive API Documentation (Swagger UI)
+
+Once the application is running, you can access the **interactive Swagger UI** at:
+```
+http://localhost:8080/swagger-ui.html
+```
+
+### Manual API Testing
 
 ### Base URL
 ```
@@ -404,9 +416,10 @@ java -version
 mvn -version
 ```
 
-## 📄 License
+## 📝 Note
 
-This project is created as a technical assessment for backend development capabilities.
+1. I have documented this README (other .md files) with assistance from ChatGPT for content structuring and formatting.
+2. Due to time constraints, Docker and Jenkins files are not included in this implementation.
 
 ## 👨‍💻 Author
 

@@ -17,7 +17,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.math.BigDecimal;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -61,7 +61,7 @@ class OrderServiceTest {
         testOrderRequest = OrderRequest.builder()
                 .customerName("John Doe")
                 .customerEmail("john@example.com")
-                .items(Arrays.asList(itemRequest))
+                .items(Collections.singletonList(itemRequest))
                 .build();
         
         testOrderResponse = OrderResponse.builder()
@@ -107,7 +107,7 @@ class OrderServiceTest {
     
     @Test
     void getAllOrders_WithoutStatusFilter() {
-        List<Order> orders = Arrays.asList(testOrder);
+        List<Order> orders = Collections.singletonList(testOrder);
         when(orderRepository.findAll()).thenReturn(orders);
         when(orderMapper.toResponse(any(Order.class))).thenReturn(testOrderResponse);
         
@@ -120,7 +120,7 @@ class OrderServiceTest {
     
     @Test
     void getAllOrders_WithStatusFilter() {
-        List<Order> orders = Arrays.asList(testOrder);
+        List<Order> orders = Collections.singletonList(testOrder);
         when(orderRepository.findByStatus(OrderStatus.PENDING)).thenReturn(orders);
         when(orderMapper.toResponse(any(Order.class))).thenReturn(testOrderResponse);
         
@@ -165,7 +165,7 @@ class OrderServiceTest {
     
     @Test
     void processPendingOrders_Success() {
-        List<Order> pendingOrders = Arrays.asList(testOrder);
+        List<Order> pendingOrders = Collections.singletonList(testOrder);
         when(orderRepository.findByStatus(OrderStatus.PENDING)).thenReturn(pendingOrders);
         when(orderRepository.save(any(Order.class))).thenReturn(testOrder);
         
