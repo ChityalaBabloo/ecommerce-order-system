@@ -18,15 +18,17 @@ This system focuses on **order processing and management**. The following aspect
 - Focus is on order lifecycle management: creation, status updates, cancellation, and automated processing
 
 ## 📋 Table of Contents
-- [Features](#features)
-- [Technology Stack](#technology-stack)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Running the Application](#running-the-application)
-- [API Documentation](#api-documentation)
-- [Database](#database)
-- [Testing](#testing)
-- [Project Structure](#project-structure)
+- [Features](#-features)
+- [Technology Stack](#-technology-stack)
+- [Prerequisites](#-prerequisites)
+- [Installation](#-installation)
+- [Running the Application](#️-running-the-application)
+- [API Documentation](#-api-documentation)
+- [Database](#-database)
+- [Testing](#-testing)
+- [Project Structure](#-project-structure)
+- [Order Status Flow](#-order-status-flow)
+- [Troubleshooting](#-troubleshooting)
 
 ## ✨ Features
 
@@ -291,18 +293,6 @@ The application uses H2 in-memory database with the following schema:
 
 ## 🧪 Testing
 
-### Run All Tests
-```bash
-mvn test
-```
-
-### Run Specific Test Class
-```bash
-mvn test -Dtest=OrderServiceTest
-mvn test -Dtest=OrderControllerTest
-mvn test -Dtest=OrderProcessingIntegrationTest
-```
-
 ### Code Coverage with JaCoCo
 
 Generate code coverage report:
@@ -310,49 +300,25 @@ Generate code coverage report:
 mvn clean test
 ```
 
-View the coverage report:
+After running the above command, an `index.html` file gets generated at `target/site/jacoco/index.html`. Open it in a browser to see the code coverage report.
+
+**On macOS:**
 ```bash
 open target/site/jacoco/index.html
 ```
 
-Or on Linux:
-```bash
-xdg-open target/site/jacoco/index.html
-```
 
-The JaCoCo report provides:
-- **Line coverage**: Percentage of code lines executed
-- **Branch coverage**: Percentage of decision branches tested
-- **Class coverage**: Percentage of classes tested
-- **Method coverage**: Percentage of methods tested
-
-**Coverage Requirements:**
-- Minimum line coverage: 70%
-- Minimum branch coverage: 60%
 
 ### Test Coverage
-- **OrderServiceTest**: Unit tests for business logic
-  - Order creation
-  - Order retrieval
-  - Status updates
-  - Order cancellation
-  - Automatic processing
 
-- **OrderControllerTest**: Integration tests for REST endpoints
-  - API request/response validation
-  - Error handling
-  - Status code verification
+Unit tests have been written for the following files:
+- **OrderServiceTest**: Business logic testing
+- **OrderControllerTest**: REST endpoint testing  
+- **OrderProcessingIntegrationTest**: Full integration testing
 
-- **OrderProcessingIntegrationTest**: Full integration tests
-  - Complete order lifecycle
-  - End-to-end scenarios
-  - Database integration
-  - Automatic processing
+To test the application features through APIs, follow [API_TESTING_GUIDE.md](API_TESTING_GUIDE.md).
 
-- **OrderControllerTest**: Integration tests for REST endpoints
-  - API request/response validation
-  - Error handling
-  - Status code verification
+To test from Postman, use the [Order_Processing_API.postman_collection.json](Order_Processing_API.postman_collection.json) collection. Import it into Postman and start testing the application.
 
 ## 📁 Project Structure
 
@@ -403,7 +369,6 @@ ecommerce-order-system/
 │           └── application.properties
 ├── pom.xml                                        # Maven configuration
 ├── README.md                                      # This file
-├── QUICKSTART.md                                  # Quick start guide
 ├── API_TESTING_GUIDE.md                           # API testing scenarios
 ├── ARCHITECTURE.md                                # System architecture
 └── Order_Processing_API.postman_collection.json  # Postman collection
@@ -423,60 +388,6 @@ PENDING ──────► PROCESSING ──────► SHIPPED ───
 - Background job automatically moves `PENDING` → `PROCESSING` every 5 minutes
 - Status transitions must follow the flow: `PENDING` → `PROCESSING` → `SHIPPED` → `DELIVERED`
 - `CANCELLED` and `DELIVERED` are terminal states
-
-## 🔧 Configuration
-
-Key configuration properties in `application.properties`:
-
-```properties
-# Server port
-server.port=8080
-
-# Database
-spring.datasource.url=jdbc:h2:mem:orderdb
-
-# Scheduling (5 minutes = 300000 milliseconds)
-# Configured in @Scheduled annotation with fixedRate = 300000
-```
-
-## 📝 Example Usage with cURL
-
-### Create an Order
-```bash
-curl -X POST http://localhost:8080/api/orders \
-  -H "Content-Type: application/json" \
-  -d '{
-    "customerName": "Jane Smith",
-    "customerEmail": "jane@example.com",
-    "items": [
-      {
-        "productName": "Smartphone",
-        "quantity": 1,
-        "price": 799.99
-      }
-    ]
-  }'
-```
-
-### Get Order by ID
-```bash
-curl http://localhost:8080/api/orders/1
-```
-
-### Get All Pending Orders
-```bash
-curl http://localhost:8080/api/orders?status=PENDING
-```
-
-### Update Order Status
-```bash
-curl -X PUT "http://localhost:8080/api/orders/1/status?status=PROCESSING"
-```
-
-### Cancel Order
-```bash
-curl -X POST http://localhost:8080/api/orders/1/cancel
-```
 
 ## 🐛 Troubleshooting
 
@@ -499,4 +410,4 @@ This project is created as a technical assessment for backend development capabi
 
 ## 👨‍💻 Author
 
-E-commerce Order Processing System - Backend Assignment
+Dharma Teja Chityala
