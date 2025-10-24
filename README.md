@@ -95,6 +95,7 @@ java -jar target/order-processing-system-1.0.0.jar
 
 ### Access the Application
 
+After starting the application, access the following URLs:
 - **Application URL**: <http://localhost:8080> (root endpoint with API details)
 - **H2 Console** (for database inspection): <http://localhost:8080/h2-console> 
 - (Click on the above link to access h2-databse. use the following credentials and click "Connect" to access the database.)

@@ -32,7 +32,7 @@ public class HomeController {
         response.put("swagger", "/swagger-ui.html");
         response.put("apiDocs", "/api-docs");
         response.put("h2Console", "/h2-console");
-        response.put("documentation", "Visit /swagger-ui.html for interactive API documentation");
+        response.put("documentation", "Visit http://localhost:8080/swagger-ui.html for interactive API documentation");
         
         return ResponseEntity.ok(response);
     }
